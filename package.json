@@ -1,0 +1,16 @@
+{
+  "name": "nodeVSphp",
+  "version": "1.0.0",
+  "description": "A simple REST webservice that gets data from redis.",
+  "main": "node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ioredis": "^1.14.0",
+    "redis": "^2.4.2"
+  }
+}
