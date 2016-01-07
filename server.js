@@ -1,5 +1,7 @@
 var http = require('http');
 var redis = require('redis'), client = redis.createClient();
+
+//ioredis is actually SLOWER that the redis library above...odd
 //var redis = require('ioredis'), client = new redis();
 
 var server = http.createServer(function(request, response) {
