@@ -13,7 +13,7 @@ PHP7-FPM used via unix sockets from nginx.  Nginx is mostly default at 4 worker_
 All 3 scripts provide a simple HTTP endpoint that gets data from redis.  The redis key is a simple
 hash of a few paragraphs worth of text.  Nothing too big.
 
-All `ab` HTTP request to node, go and nginx are localhost, no external TCP/IP, no loadbalancers in the way
+All `ab` HTTP requests to node, go and nginx sockets are localhost, no external TCP/IP, no loadbalancers in the way, all 127.0.0.1
 Redis was setup to use TCP/IP sockets as usual, not UNIX sockets.
 
 Using apache bench with -n for number of connections and -c for concurrency
