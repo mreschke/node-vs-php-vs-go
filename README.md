@@ -1,19 +1,19 @@
 # Node.js vs Nginx-PHP7-FPM vs Go
 
-A basic speed test between nginx+php vs nodejs vs go
+A basic speed test between Node.js, Nginx-PHP7-FPM and golang
 
-My test VM is a Debian Jessia KVM virtual machine with 4GB ram and 4-core...the physical machine
+My test VM is an in-house (OpenNebula) Debian Jessie KVM virtual machine with 4GB ram and 4-core...the physical machine
 it sits on is a Dell R710, with dual 6-core xeons...its a good fast VM.
 
-Notice its plan old PHP7, no framework...don't even use the composer autoloader, but predis autoloader.
+Notice its plan old PHP7-FPM, no framework.  I don't even use the composer autoloader, but predis autoloader.
 
-PHP used through PHP7-FPM on nginx.
+PHP7-FPM used via unix sockets from nginx.
 
-A simple http endpoint that gets data from redis.  The redis key is a simple
+All 3 scripts provide a simple HTTP endpoint that gets data from redis.  The redis key is a simple
 hash of a few paragraphs worth of text.  Nothing too big.
 
 Both node.js port:3000 and nginx port:80 were accessed at localhost 127.0.0.1 so no external
-factors or loadbalancers used.  Redis was setup to use TCP/IP sockets as usual, not UNIX sockets.
+factors or loadbalancers used...all internal.  Redis was setup to use TCP/IP sockets as usual, not UNIX sockets.
 
 Using apache bench with -n for number of connections and -c for concurrency
 
