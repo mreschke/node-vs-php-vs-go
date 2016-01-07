@@ -8,7 +8,7 @@ it sits on is a Dell R710, with dual 6-core hyperthreaded Xeons...its a good fas
 Notice its plan old PHP7-FPM, Opcache is of course enabled as default.  No Laravel/Lumen/Symfony framework.
 I don't even use the composer autoloader, but predis autoloader.
 
-PHP7-FPM used via unix sockets from nginx.
+PHP7-FPM used via unix sockets from nginx.  Nginx is mostly default at 4 worker_processes.
 
 All 3 scripts provide a simple HTTP endpoint that gets data from redis.  The redis key is a simple
 hash of a few paragraphs worth of text.  Nothing too big.
