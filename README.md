@@ -3,7 +3,7 @@
 A basic speed test between Node.js, Nginx-PHP7-FPM and golang
 
 My test VM is an in-house (OpenNebula) Debian Jessie KVM virtual machine with 4GB ram and 4-core...the physical machine
-it sits on is a Dell R710, with dual 6-core xeons...its a good fast VM.
+it sits on is a Dell R710, with dual 6-core hyperthreaded Xeons...its a good fast VM.
 
 Notice its plan old PHP7-FPM, no framework.  I don't even use the composer autoloader, but predis autoloader.
 
