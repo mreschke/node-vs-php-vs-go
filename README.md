@@ -32,6 +32,7 @@ ab -n1000 -c20	2100 r/s, 9.4 ms/r		2200 r/s, 9.0 ms/r	4000 r/s, 4.9 ms/r
 ab -n5000 -c200 2300 r/s, 86.4 ms/r		5400 r/s, 37 ms/r	5000 r/s, 49.6 ms/r
 ```
 
-Node faster for single hits, but as concurrency grew, PHP/nginx became faster.
+Node faster for single hits, but as concurrency grew, PHP/nginx became faster.  PHP was even faster
+than GO at handling large concurrency...which is a testament to nginx I am sure.
 
 Oddly enough, the node.js test with the ioredis library was slower than with the regular redis library.
