@@ -20,6 +20,7 @@ Using apache bench with -n for number of connections and -c for concurrency
 r/s = requests per secone
 ms/r = mean milliseconds per request
 
+```
 test			node.js					php7				go
 --------------------------------------------------------------
 ab -n10 -c1		1173 r/s, 0.8 ms/r		560 r/s, 1.7 ms/r	797 r/s, 1.2 ms/r
@@ -27,6 +28,7 @@ ab -n100 -c1	1200 r/s, 0.8 ms/r		622 r/s, 1.6 ms/r	795 r/s, 1.2 ms/r
 ab -n100 -c10   1749 r/s, 5.75 ms/r		1900 r/s, 5.1 ms/r	3100 r/s, 3.2 ms/r
 ab -n1000 -c20	2100 r/s, 9.4 ms/r		2200 r/s, 9.0 ms/r	4000 r/s, 4.9 ms/r
 ab -n5000 -c200 2300 r/s, 86.4 ms/r		5400 r/s, 37 ms/r	5000 r/s, 49.6 ms/r
+```
 
 Node faster for single hits, but as concurrency grew, PHP/nginx became faster.
 
