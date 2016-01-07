@@ -13,8 +13,8 @@ PHP7-FPM used via unix sockets from nginx.  Nginx is mostly default at 4 worker_
 All 3 scripts provide a simple HTTP endpoint that gets data from redis.  The redis key is a simple
 hash of a few paragraphs worth of text.  Nothing too big.
 
-Both node.js port:3000 and nginx port:80 were accessed at localhost 127.0.0.1 so no external
-factors or loadbalancers used...all internal.  Redis was setup to use TCP/IP sockets as usual, not UNIX sockets.
+All `ab` HTTP request to node, go and nginx are localhost, no external TCP/IP, no loadbalancers in the way
+Redis was setup to use TCP/IP sockets as usual, not UNIX sockets.
 
 Using apache bench with -n for number of connections and -c for concurrency
 
