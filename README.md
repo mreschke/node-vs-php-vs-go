@@ -1,5 +1,7 @@
 # Node.js vs Nginx-PHP7-FPM vs Go
 
+
+### The Setup
 A basic speed test between Node.js, Nginx-PHP7-FPM and golang
 
 My test VM is an in-house (OpenNebula) Debian Jessie KVM virtual machine with 4GB ram and 4-core...the physical machine
@@ -18,10 +20,8 @@ Redis was setup to use TCP/IP sockets as usual, not UNIX sockets.
 
 Using apache bench with -n for number of connections and -c for concurrency
 
-`r/s` = requests per second
 
-`ms/r` = mean milliseconds per request
-
+### The Results
 ```
 test			node.js					php7				go
 --------------------------------------------------------------
@@ -31,6 +31,10 @@ ab -n100 -c10   1749 r/s, 5.75 ms/r		1900 r/s, 5.1 ms/r	3100 r/s, 3.2 ms/r
 ab -n1000 -c20	2100 r/s, 9.4 ms/r		2200 r/s, 9.0 ms/r	4000 r/s, 4.9 ms/r
 ab -n5000 -c200 2300 r/s, 86.4 ms/r		5400 r/s, 37 ms/r	5000 r/s, 49.6 ms/r
 ```
+
+`r/s` = requests per second
+
+`ms/r` = mean milliseconds per request
 
 Node faster for single hits, but as concurrency grew, PHP/nginx became faster.  PHP was even faster
 than GO at handling large concurrency...which is a testament to nginx I am sure.
