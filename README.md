@@ -17,8 +17,9 @@ factors or loadbalancers used...all internal.  Redis was setup to use TCP/IP soc
 
 Using apache bench with -n for number of connections and -c for concurrency
 
-r/s = requests per secone
-ms/r = mean milliseconds per request
+`r/s` = requests per secone
+
+`ms/r` = mean milliseconds per request
 
 ```
 test			node.js					php7				go
