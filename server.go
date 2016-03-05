@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"runtime"
 
 	"gopkg.in/redis.v3"
 )
@@ -18,7 +17,6 @@ func (s *Server) handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	runtime.GOMAXPROCS(1)
 	client := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		Password: "",
