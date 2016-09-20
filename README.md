@@ -1,53 +1,113 @@
-# Node.js vs Nginx-PHP7-FPM vs Go
+# Node vs PHP vs Go
 
-**NOTICE:  These results are not accurate while using multi-core at the moment, simply
-because node.js will utilize only one while nginx and go will utilize all.  I will update
-results while testing within equally constrained containers shortly**
-
-### The Setup
-A basic speed test between Node.js, Nginx-PHP7-FPM and golang
-
-PHP7, with nginx at 4 workers will utilize all cores
-Node.js as I started it, is NOT multi-core, yet...
-Go v1.5.2 will utilize all cores
-
-My test VM is an in-house (OpenNebula) Debian Jessie KVM virtual machine with 4GB ram and 4-core...the physical machine
-it sits on is a Dell R710, with dual 6-core hyperthreaded Xeons...its a good fast VM.
-
-Notice its plan old PHP7-FPM, Opcache is of course enabled as default.  No Laravel/Lumen/Symfony framework.
-I don't even use the composer autoloader, but predis autoloader.
-
-PHP7-FPM used via unix sockets from nginx.  Nginx is mostly default at 4 worker_processes.
-**This will mean nginx will use multiple cores..while this node.js test will not.**
-
-All 3 scripts provide a simple HTTP endpoint that gets data from redis.  The redis key is a simple
-hash of a few paragraphs worth of text.  Nothing too big.
-
-All `ab` HTTP requests to node, go and nginx sockets are localhost, no external TCP/IP, no loadbalancers in the way, all 127.0.0.1
-Redis was setup to use TCP/IP sockets as usual, not UNIX sockets.
-
-Using apache bench with -n for number of connections and -c for concurrency
+- [Disclaimer](#disclaimer)
+- [Localhost Hello World](#test1)
+- [Localhost JSON Encode](#test2)
+- [Localhost MySQL JSON Encode](#test3)
+- [Localhost Redis JSON Encode](#test4)
+- [1GB LAN Test 5,6,7,8](#test5)
 
 
-### The Results
+<a name="disclaimer"></a>
+## Disclaimer
 
-Node.js is short here because it will not utilize all cores in this test.
+This is not a raw benchmark but a comparison of basic operations between the 3 platforms.  The personal nature of this repo is to help me decide on which HTTP JSON API platform to use for a particular project, which is why I include Laravel, Lumen, Iris...  I compare basic `hello world`, but also basic database queries and json encoding.  Feel free to add more comparison tests as needed.  You can find actual raw benchmarks of each platform elsewhere.
+
+My original comparison can be read in the `README-OLD.md` file, which is not in-depth or accurate enough for my needs.
 
 
-```
-test			node.js					php7				go
---------------------------------------------------------------
-ab -n10 -c1		1173 r/s, 0.8 ms/r		560 r/s, 1.7 ms/r	797 r/s, 1.2 ms/r
-ab -n100 -c1	1200 r/s, 0.8 ms/r		622 r/s, 1.6 ms/r	795 r/s, 1.2 ms/r
-ab -n100 -c10   1749 r/s, 5.75 ms/r		1900 r/s, 5.1 ms/r	3100 r/s, 3.2 ms/r
-ab -n1000 -c20	2100 r/s, 9.4 ms/r		2200 r/s, 9.0 ms/r	4000 r/s, 4.9 ms/r
-ab -n5000 -c200 2300 r/s, 86.4 ms/r		5400 r/s, 37 ms/r	5000 r/s, 49.6 ms/r
-```
 
-`r/s` = requests per second
 
-`ms/r` = mean milliseconds per request
+<a name="test1"></a>
+## Test #1 - Localhost Hello World
 
-Node faster for single hits, but as concurrency grew, PHP/nginx became faster (becuase nginx will utilize
-multiple cores while node will not in this test.  Go at v1.5 will utilize multi-core.
+A simple `hello world` test.  Everything including `wrk` is localhost.
 
+##### Results
+
+TODO: show results
+Pure PHP7
+Laravel PHP7
+Lumen PHP7
+Pure Node
+Express Node
+Koa Node
+Pure Go
+Iris Go
+
+##### Setup
+
+TODO: explain the actual test machine and setup, which versions, PHP-FPM nginx etc...
+
+
+
+
+<a name="test2"></a>
+## Test #2 - Localhost JSON Encode
+
+A hard coded array encoded to JSON.  Everything including `wrk` is localhost.
+
+##### Results
+
+TODO: show results
+
+##### Setup
+
+TODO: explain the actual test machine and setup, which versions, PHP-FPM nginx etc...
+
+
+
+
+<a name="test3"></a>
+## Test #3 - Localhost MySQL JSON Encode
+
+A MySQL result encoded to JSON.  Everything including `wrk` is localhost.
+
+##### Results
+
+TODO: show results
+
+##### Setup
+
+TODO: explain the actual test machine and setup, which versions, PHP-FPM nginx etc...
+Mysql setup, and config optimizations etc...
+
+
+
+
+<a name="test4"></a>
+## Test #4 - Localhost Redis JSON Encode
+
+A Redis result encoded to JSON.  Everything including `wrk` is localhost.
+
+##### Results
+
+TODO: show results
+
+##### Setup
+
+TODO: explain the actual test machine and setup, which versions, PHP-FPM nginx etc...
+Redis setup and optimizations etc...
+
+
+
+
+<a name="test5"></a>
+## Test #5, 6, 7, 8
+
+Same as test 1,2,3,4 but over 1GB LAN with physical servers and `wkr` on separate machine across network.
+
+
+
+
+## Contributing
+
+Thank you for considering contributing to this comparison!  Please add issues and comments or fork and pull!
+
+Thanks to @Allendar and @borislemke for their contributions.
+
+See also https://github.com/borislemke/nodejs_vs_php
+
+### License
+
+This comparison is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT)
