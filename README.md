@@ -104,7 +104,7 @@ Same as test 1,2,3,4 but over 1GB LAN with physical servers and `wkr` on separat
 
 Thank you for considering contributing to this comparison!  Please add issues and comments or fork and pull!
 
-Thanks to @Allendar and @borislemke for their contributions.
+Thanks to [@Allendar](https://github.com/Allendar) and [@borislemke](https://github.com/borislemke) for their contributions.
 
 See also https://github.com/borislemke/nodejs_vs_php
 
